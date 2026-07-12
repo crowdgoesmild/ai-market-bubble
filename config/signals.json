@@ -1,0 +1,43 @@
+{
+  "tickers": [
+    "NVDA",
+    "AMD",
+    "AVGO",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "META",
+    "ORCL",
+    "SMH",
+    "QQQ",
+    "SPY"
+  ],
+  "ai_basket": [
+    "NVDA",
+    "AMD",
+    "AVGO",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "META",
+    "ORCL",
+    "SMH"
+  ],
+  "benchmark": "SPY",
+  "market_data_provider": "tiingo",
+  "weights": {
+    "market": 0.35,
+    "fundamentals": 0.25,
+    "capex_narrative": 0.15,
+    "adoption": 0.1,
+    "macro": 0.1,
+    "private_market": 0.05
+  },
+  "alert_threshold_change": 5,
+  "status_thresholds": {
+    "normal": 25,
+    "elevated": 40,
+    "strained": 55,
+    "high_risk": 70
+  }
+}

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-bubble-monitor"
+version = "0.2.0"
+description = "Daily AI market-stress monitor with a static dashboard."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "pandas==2.2.3",
+    "numpy==2.1.3",
+    "requests==2.32.3",
+    "plotly==5.24.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.4",
+    "ruff==0.8.4",
+]
+
+[project.scripts]
+ai-bubble-monitor = "src.run_daily:main"
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
