@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-10",
-  "generated_at": "2026-07-13T10:20:41.140458+00:00",
+  "generated_at": "2026-07-13T11:22:51+00:00",
   "score": 16.4,
   "status": "Normal",
   "confidence": 0.88,
@@ -1028,44 +1028,44 @@
         "github_repositories": [
           {
             "repository": "huggingface/transformers",
-            "stars": 162563,
+            "stars": 162568,
             "forks": 33877,
-            "open_issues": 2498,
+            "open_issues": 2490,
             "days_since_push": 0
           },
           {
             "repository": "pytorch/pytorch",
             "stars": 101789,
-            "forks": 28487,
-            "open_issues": 18298,
+            "forks": 28488,
+            "open_issues": 18301,
             "days_since_push": 0
           },
           {
             "repository": "langchain-ai/langchain",
-            "stars": 141656,
+            "stars": 141662,
             "forks": 23546,
             "open_issues": 422,
             "days_since_push": 0
           },
           {
             "repository": "ollama/ollama",
-            "stars": 176025,
+            "stars": 176030,
             "forks": 16958,
-            "open_issues": 3428,
+            "open_issues": 3423,
             "days_since_push": 3
           },
           {
             "repository": "vllm-project/vllm",
-            "stars": 86124,
-            "forks": 19342,
-            "open_issues": 5739,
+            "stars": 86129,
+            "forks": 19344,
+            "open_issues": 5736,
             "days_since_push": 0
           },
           {
             "repository": "microsoft/autogen",
-            "stars": 59700,
+            "stars": 59703,
             "forks": 8985,
-            "open_issues": 948,
+            "open_issues": 947,
             "days_since_push": 88
           }
         ],
@@ -1073,7 +1073,7 @@
           {
             "model": "meta-llama/Llama-3.1-8B-Instruct",
             "downloads": 8452706,
-            "likes": 6293,
+            "likes": 6296,
             "days_since_modified": 655
           },
           {
@@ -1091,7 +1091,7 @@
           {
             "model": "openai/gpt-oss-20b",
             "downloads": 7226678,
-            "likes": 4788,
+            "likes": 4789,
             "days_since_modified": 320
           }
         ],
