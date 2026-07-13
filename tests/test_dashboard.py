@@ -48,8 +48,8 @@ def test_build_dashboard_writes_static_html(tmp_path) -> None:
         },
     }
     history = [
-        {"date": "2026-01-01", "score": 14, "status": "Normal"},
-        {"date": "2026-01-02", "score": 12, "status": "Normal"},
+        {"run_at": "2026-01-02T10:00:00+00:00", "date": "2026-01-02", "market_as_of": "2026-01-01", "score": 14, "status": "Normal"},
+        {"run_at": "2026-01-02T11:00:00+00:00", "date": "2026-01-02", "market_as_of": "2026-01-01", "score": 12, "status": "Normal"},
     ]
     output_path = tmp_path / "index.html"
 
@@ -58,5 +58,6 @@ def test_build_dashboard_writes_static_html(tmp_path) -> None:
     html = output_path.read_text(encoding="utf-8")
     assert "AI Bubble Stress Monitor" in html
     assert "Signal categories" in html
+    assert "Market data 2026-01-02" in html
     assert "No stress thresholds triggered" in html
     assert "AAA" in html

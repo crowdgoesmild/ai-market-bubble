@@ -6,6 +6,16 @@ import plotly.graph_objects as go
 from plotly.offline import plot
 
 
+def _display_timestamp(value: str | None) -> str:
+    if not value:
+        return "Unknown"
+
+    compact = value.replace("T", " ")[:16]
+    if value.endswith("+00:00") or value.endswith("Z"):
+        return f"{compact} UTC"
+    return compact
+
+
 def _category_row(key: str, category: dict) -> str:
     label = category.get("label", key)
     if category.get("active"):
@@ -26,8 +36,9 @@ def _category_row(key: str, category: dict) -> str:
 
 
 def build_dashboard(latest: dict, history: list[dict], output_path: Path) -> None:
-    dates = [row["date"] for row in history]
+    dates = [row.get("run_at") or row["date"] for row in history]
     scores = [row["score"] for row in history]
+    run_display = _display_timestamp(latest.get("generated_at"))
 
     score_chart = go.Figure()
     score_chart.add_trace(
@@ -117,7 +128,7 @@ small {{ color:#6b7280; }}
 <div class="card">
 <div class="score">{latest['score']:.0f}/100</div>
 <div class="status">{latest['status']}</div>
-<small>Confidence {latest['confidence']:.0%} · Updated {latest['as_of']}</small>
+<small>Confidence {latest['confidence']:.0%} · Run {run_display} · Market data {latest['as_of']}</small>
 </div>
 </header>
 

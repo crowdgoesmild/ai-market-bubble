@@ -34,4 +34,6 @@ def test_build_sample_payload_matches_dashboard_contract() -> None:
     assert latest["status"]
     assert latest["categories"]["market"]["active"] is True
     assert len(history) == 90
+    assert "run_at" in history[-1]
+    assert "market_as_of" in history[-1]
     assert latest["market"]["basket_history"]

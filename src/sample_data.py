@@ -39,6 +39,7 @@ def build_sample_prices(
 
 
 def build_sample_payload(config: dict) -> tuple[dict, list[dict]]:
+    generated_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     prices = build_sample_prices(
         config["tickers"],
         config["ai_basket"],
@@ -81,7 +82,9 @@ def build_sample_payload(config: dict) -> tuple[dict, list[dict]]:
         history_score = round(max(0, min(100, score + drift + wave)), 1)
         history.append(
             {
+                "run_at": f"{row['date']}T21:30:00+00:00",
                 "date": row["date"],
+                "market_as_of": row["date"],
                 "score": history_score,
                 "status": status_for(history_score, thresholds),
             }
@@ -89,7 +92,7 @@ def build_sample_payload(config: dict) -> tuple[dict, list[dict]]:
 
     latest = {
         "as_of": market["as_of"],
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": generated_at,
         "score": score,
         "status": status_for(score, thresholds),
         "confidence": confidence,

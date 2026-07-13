@@ -28,6 +28,7 @@ def main() -> None:
     config = load_config()
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    generated_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     latest_path = DATA_DIR / "latest.json"
     history_path = DATA_DIR / "score_history.json"
@@ -70,7 +71,7 @@ def main() -> None:
 
     latest = {
         "as_of": market["as_of"],
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": generated_at,
         "score": score,
         "status": status_for(score, config.get("status_thresholds")),
         "confidence": confidence,
@@ -80,18 +81,16 @@ def main() -> None:
         "evidence": combined_evidence,
     }
 
-    history = [
-        row for row in history
-        if row.get("date") != latest["as_of"]
-    ]
     history.append(
         {
-            "date": latest["as_of"],
+            "run_at": generated_at,
+            "date": generated_at[:10],
+            "market_as_of": latest["as_of"],
             "score": latest["score"],
             "status": latest["status"],
         }
     )
-    history = sorted(history, key=lambda row: row["date"])[-1000:]
+    history = sorted(history, key=lambda row: row.get("run_at") or row["date"])[-1000:]
 
     latest_path.write_text(
         json.dumps(latest, indent=2),

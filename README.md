@@ -85,7 +85,7 @@ The pipeline validates this config at startup so missing basket members or inval
 Running the monitor writes:
 
 - `data/latest.json`: full latest run payload.
-- `data/score_history.json`: historical score series.
+- `data/score_history.json`: historical run series. Each row includes `run_at` for the workflow execution time and `market_as_of` for the latest market-data date.
 - `docs/data.json`: latest payload for static hosting.
 - `docs/index.html`: static Plotly dashboard.
 
@@ -111,7 +111,7 @@ The dashboard is a market-stress monitor for the configured AI basket. It does n
 - `Basket below 200-day average`: the share of AI-basket tickers trading below their own 200-day moving average. This tracks longer-term trend damage. A high reading suggests the basket has moved from a pullback into a more durable downtrend.
 - `Basket drawdown`: the equal-weight AI basket's decline from its own recent peak. Larger negative values show deeper damage from the basket's high-water mark.
 - `Approx. 3-month return versus SPY`: the equal-weight AI basket's roughly 63-trading-day return minus SPY's return over the same window. Negative values mean the AI basket is lagging the broad US equity benchmark.
-- `Stress score history`: the saved daily score series from `data/score_history.json`. It shows whether market stress is building, fading, or moving sideways over time.
+- `Stress score history`: the saved run series from `data/score_history.json`. It uses workflow execution time on the x-axis, so manual reruns appear as additional points even if Tiingo's latest market-data date has not changed.
 - `AI basket index, recent 180 sessions`: an equal-weight synthetic index built from the configured AI-basket tickers. It is useful for seeing the basket's recent trend without one mega-cap dominating the chart.
 - `Triggered evidence`: the specific scoring rules that fired today, with the points each rule added. If no thresholds fired, the score is low because none of the current market-stress conditions were severe enough.
 - `Basket detail`: per-ticker latest adjusted close, whether the ticker is below its 50-day and 200-day moving averages, and its 52-week drawdown.
