@@ -5,7 +5,8 @@ A small, free daily monitoring pipeline that tracks stress in AI-linked public m
 The current implementation:
 
 - downloads daily market data from Tiingo EOD;
-- calculates breadth, drawdown, relative strength, and volatility signals;
+- calculates market breadth, drawdown, relative strength, and volatility signals;
+- adds free SEC fundamentals, SEC filing-language checks, public adoption proxies, and optional FRED macro signals;
 - produces a transparent 0-100 stress score with evidence rows;
 - writes JSON snapshots to `data/` and `docs/data.json`;
 - renders a static dashboard to `docs/index.html`;
@@ -72,6 +73,10 @@ Edit `config/signals.json` to change the monitored universe:
 - `benchmark`: the relative-strength benchmark, currently `SPY`.
 - `status_thresholds`: score boundaries for Normal, Elevated, Strained, High risk, and Severe.
 - `alert_threshold_change`: score movement required before Discord sends another same-status alert.
+- `sec_companies`: SEC CIKs used for no-key companyfacts and filing-language analysis.
+- `macro_series`: FRED series IDs used when `FRED_API_KEY` is configured.
+- `adoption`: public GitHub repositories and Hugging Face models used as adoption proxies.
+- `filing_language`: AI, risk, and capex terms counted in recent 10-K/10-Q filings.
 
 The pipeline validates this config at startup so missing basket members or invalid thresholds fail early.
 
@@ -100,7 +105,8 @@ This writes `docs/sample.html` and `docs/sample-data.json` from deterministic sy
 The dashboard is a market-stress monitor for the configured AI basket. It does not try to predict a crash; it shows whether price action is becoming broad, persistent, volatile, or weak versus the wider market.
 
 - `Stress score`: a 0-100 score built from triggered market-stress signals. Higher means more stress. The current status labels come from `config/signals.json`: Normal, Elevated, Strained, High risk, and Severe.
-- `Confidence`: currently fixed at 55%. It reflects that version 0.2 only uses market-price indicators; future fundamentals, macro, adoption, private-market, and filing-language signals are not active yet.
+- `Confidence`: a coverage indicator based on which weighted signal categories are active and how complete their data is. Confidence rises when independent non-price sources are available.
+- `Signal categories`: the category-level scores feeding the final weighted score. Active categories currently include market price, SEC fundamentals, SEC filing language, public adoption proxies, and FRED macro when a free FRED key is configured. Private market remains inactive because there is no reliable free structured source configured.
 - `Basket below 50-day average`: the share of AI-basket tickers trading below their own 50-day moving average. This tracks short-to-medium-term breadth. A high reading means weakness is spreading across the basket rather than being isolated to one name.
 - `Basket below 200-day average`: the share of AI-basket tickers trading below their own 200-day moving average. This tracks longer-term trend damage. A high reading suggests the basket has moved from a pullback into a more durable downtrend.
 - `Basket drawdown`: the equal-weight AI basket's decline from its own recent peak. Larger negative values show deeper damage from the basket's high-water mark.
@@ -118,12 +124,25 @@ The current market score can add points from five signal groups:
 - `Volatility`: adds points when 20-day annualised basket volatility is in at least the 85th or 95th percentile of its recent history.
 - `Relative weakness`: adds points when the basket trails SPY by at least 6% or 12% over roughly three months.
 
+## Free Data Sources
+
+The non-price indicators use free public sources where possible:
+
+- `SEC companyfacts`: no-key JSON data from `data.sec.gov` for revenue growth, operating margin, and capex intensity. SEC documents that these EDGAR APIs provide submissions and XBRL data without authentication or API keys: https://www.sec.gov/search-filings/edgar-application-programming-interfaces
+- `SEC filings`: no-key recent 10-K/10-Q filing documents from EDGAR for AI, risk, and capex language density. Set `SEC_USER_AGENT` to identify your app and contact email.
+- `FRED macro`: free FRED API observations for VIX, credit spreads, Treasury yields, and financial conditions. This requires a free `FRED_API_KEY`: https://fred.stlouisfed.org/docs/api/fred/series_observations.html
+- `GitHub adoption`: public GitHub repository metadata such as stars, forks, open issues, and recent push activity. GitHub Actions provides `GITHUB_TOKEN` automatically for higher rate limits in workflow runs.
+- `Hugging Face adoption`: public model metadata such as downloads, likes, and last-modified dates from the Hugging Face Hub API: https://huggingface.co/docs/hub/en/api
+- `Private market`: inactive for now. I have not found a reliable free structured source for funding rounds, down rounds, or private AI valuations.
+
 ## Discord Alerts
 
 Create a Discord webhook and set it locally:
 
 ```bash
 export TIINGO_API_TOKEN="..."
+export FRED_API_KEY="..."
+export SEC_USER_AGENT="ai-bubble-monitor/0.2 your-email@example.com"
 export DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..."
 export DASHBOARD_URL="https://<your-github-user>.github.io/ai-bubble-monitor/"
 ```
@@ -133,7 +152,9 @@ For local development, copy `.env.example` into your shell or a local environmen
 In GitHub, add:
 
 - an Actions secret named `TIINGO_API_TOKEN`;
+- an optional Actions secret named `FRED_API_KEY`;
 - an Actions secret named `DISCORD_WEBHOOK_URL`;
+- an optional repository variable named `SEC_USER_AGENT`;
 - an optional repository variable named `DASHBOARD_URL`.
 
 ## Automation
@@ -149,6 +170,11 @@ GitHub Actions cron schedules are UTC. Adjust the cron if you want a different m
 
 - `src/config.py`: paths and config validation.
 - `src/market.py`: Tiingo EOD download and market metric calculation.
+- `src/category_scoring.py`: common category result contract and weighted score combination.
+- `src/fundamentals.py`: free SEC companyfacts fundamentals.
+- `src/filing_language.py`: free SEC 10-K/10-Q language checks.
+- `src/macro.py`: optional free-with-key FRED macro indicators.
+- `src/adoption.py`: public GitHub and Hugging Face adoption proxies.
 - `src/scoring.py`: score and status logic.
 - `src/dashboard.py`: static HTML dashboard rendering.
 - `src/sample_data.py`: deterministic synthetic data for offline dashboard work.
@@ -162,7 +188,7 @@ GitHub Actions cron schedules are UTC. Adjust the cron if you want a different m
 
 Version 0.2 implements the daily market-stress layer using Tiingo EOD instead of browser-gated public endpoints.
 
-SEC fundamentals, FRED macro data, adoption metrics, private-market data, and filing-language analysis are represented in the data model but intentionally left for later iterations.
+Free SEC fundamentals, SEC filing-language checks, public GitHub/Hugging Face adoption proxies, and optional FRED macro data are active. Private-market data is still inactive because the project does not yet have a reliable free structured source.
 
 ## Troubleshooting
 

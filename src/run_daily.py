@@ -4,9 +4,14 @@ import json
 import os
 from datetime import datetime, timezone
 
+from .adoption import analyze_adoption
+from .category_scoring import active_category, combine_category_scores, inactive_category, safe_category
 from .config import DATA_DIR, DOCS_DIR, load_config
 from .dashboard import build_dashboard
 from .discord_notify import maybe_notify
+from .filing_language import analyze_filing_language
+from .fundamentals import analyze_fundamentals
+from .macro import analyze_macro
 from .market import MarketDataError, calculate_market_metrics, download_prices
 from .scoring import score_market, status_for
 
@@ -40,24 +45,39 @@ def main() -> None:
     )
     market_score, evidence = score_market(market)
 
-    confidence = 0.55
+    categories = {
+        "market": active_category(
+            "market",
+            market_score,
+            1.0,
+            market,
+            evidence,
+            "Tiingo daily adjusted-price indicators active.",
+        ),
+        "fundamentals": safe_category("fundamentals", analyze_fundamentals, config),
+        "capex_narrative": safe_category("capex_narrative", analyze_filing_language, config),
+        "adoption": safe_category("adoption", analyze_adoption, config),
+        "macro": safe_category("macro", analyze_macro, config),
+        "private_market": inactive_category(
+            "private_market",
+            "No reliable free structured private-market source is configured.",
+        ),
+    }
+    score, confidence, category_scores, combined_evidence = combine_category_scores(
+        config["weights"],
+        categories,
+    )
 
     latest = {
         "as_of": market["as_of"],
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "score": market_score,
-        "status": status_for(market_score, config.get("status_thresholds")),
+        "score": score,
+        "status": status_for(score, config.get("status_thresholds")),
         "confidence": confidence,
-        "category_scores": {
-            "market": market_score,
-            "fundamentals": None,
-            "capex_narrative": None,
-            "adoption": None,
-            "macro": None,
-            "private_market": None,
-        },
+        "category_scores": category_scores,
+        "categories": categories,
         "market": market,
-        "evidence": evidence,
+        "evidence": combined_evidence,
     }
 
     history = [

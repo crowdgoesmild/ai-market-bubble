@@ -65,3 +65,11 @@ def test_validate_config_requires_tiingo_provider() -> None:
 
     with pytest.raises(ValueError, match="market_data_provider"):
         validate_config(config)
+
+
+def test_validate_config_requires_all_category_weights() -> None:
+    config = valid_config()
+    del config["weights"]["macro"]
+
+    with pytest.raises(ValueError, match="Missing category weight"):
+        validate_config(config)

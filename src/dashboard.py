@@ -6,6 +6,25 @@ import plotly.graph_objects as go
 from plotly.offline import plot
 
 
+def _category_row(key: str, category: dict) -> str:
+    label = category.get("label", key)
+    if category.get("active"):
+        score = f"{category['score']:.0f}/100"
+        confidence = f"{category.get('confidence', 0):.0%}"
+    else:
+        score = "Inactive"
+        confidence = "0%"
+
+    return (
+        "<tr>"
+        f"<td>{label}</td>"
+        f"<td>{score}</td>"
+        f"<td>{confidence}</td>"
+        f"<td>{category.get('message', '')}</td>"
+        "</tr>"
+    )
+
+
 def build_dashboard(latest: dict, history: list[dict], output_path: Path) -> None:
     dates = [row["date"] for row in history]
     scores = [row["score"] for row in history]
@@ -38,10 +57,20 @@ def build_dashboard(latest: dict, history: list[dict], output_path: Path) -> Non
         height=360,
     )
 
+    category_rows = "".join(
+        _category_row(key, category)
+        for key, category in latest.get("categories", {}).items()
+    )
+
     evidence_rows = "".join(
-        f"<tr><td>{item['signal']}</td><td>+{item['points']}</td><td>{item['detail']}</td></tr>"
+        "<tr>"
+        f"<td>{item.get('category', 'Market')}</td>"
+        f"<td>{item['signal']}</td>"
+        f"<td>+{item['points']}</td>"
+        f"<td>{item['detail']}</td>"
+        "</tr>"
         for item in latest["evidence"]
-    ) or "<tr><td colspan='3'>No market stress thresholds triggered.</td></tr>"
+    ) or "<tr><td colspan='4'>No stress thresholds triggered.</td></tr>"
 
     ticker_rows = "".join(
         "<tr>"
@@ -99,6 +128,11 @@ small {{ color:#6b7280; }}
 <div class="card"><div class="metric">{latest['market']['relative_63d_vs_spy']:.1%}</div><small>Approx. 3-month return versus SPY</small></div>
 </div>
 
+<div class="card">
+<h2>Signal categories</h2>
+<table><thead><tr><th>Category</th><th>Score</th><th>Confidence</th><th>Status</th></tr></thead><tbody>{category_rows}</tbody></table>
+</div>
+
 <div class="grid">
 <div class="card">{plot(score_chart, include_plotlyjs='cdn', output_type='div')}</div>
 <div class="card">{plot(basket_chart, include_plotlyjs=False, output_type='div')}</div>
@@ -106,7 +140,7 @@ small {{ color:#6b7280; }}
 
 <div class="card">
 <h2>Triggered evidence</h2>
-<table><thead><tr><th>Signal</th><th>Points</th><th>Evidence</th></tr></thead><tbody>{evidence_rows}</tbody></table>
+<table><thead><tr><th>Category</th><th>Signal</th><th>Points</th><th>Evidence</th></tr></thead><tbody>{evidence_rows}</tbody></table>
 </div>
 
 <div class="card">
@@ -116,7 +150,7 @@ small {{ color:#6b7280; }}
 </div>
 
 <div class="card">
-<small>Market source: {latest['market'].get('source', 'Unknown')}. Current release covers daily market indicators only.</small>
+<small>Market source: {latest['market'].get('source', 'Unknown')}. Free non-price sources are shown as active only when their required public data is available.</small>
 </div>
 </main>
 </body>

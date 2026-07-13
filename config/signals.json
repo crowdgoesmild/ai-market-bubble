@@ -25,6 +25,66 @@
   ],
   "benchmark": "SPY",
   "market_data_provider": "tiingo",
+  "sec_companies": {
+    "NVDA": "0001045810",
+    "AMD": "0000002488",
+    "AVGO": "0001730168",
+    "MSFT": "0000789019",
+    "GOOGL": "0001652044",
+    "AMZN": "0001018724",
+    "META": "0001326801",
+    "ORCL": "0001341439"
+  },
+  "macro_series": {
+    "vix": "VIXCLS",
+    "high_yield_spread": "BAMLH0A0HYM2",
+    "ten_year_yield": "DGS10",
+    "two_year_yield": "DGS2",
+    "financial_conditions": "NFCI"
+  },
+  "adoption": {
+    "github_repositories": [
+      "huggingface/transformers",
+      "pytorch/pytorch",
+      "langchain-ai/langchain",
+      "ollama/ollama",
+      "vllm-project/vllm",
+      "microsoft/autogen"
+    ],
+    "huggingface_models": [
+      "meta-llama/Llama-3.1-8B-Instruct",
+      "Qwen/Qwen2.5-7B-Instruct",
+      "mistralai/Mistral-7B-Instruct-v0.3",
+      "openai/gpt-oss-20b"
+    ]
+  },
+  "filing_language": {
+    "ai_terms": [
+      "artificial intelligence",
+      "generative ai",
+      "large language model",
+      "machine learning",
+      "accelerated computing"
+    ],
+    "risk_terms": [
+      "uncertain demand",
+      "customer concentration",
+      "supply constraints",
+      "capacity constraints",
+      "competition",
+      "regulation",
+      "export controls",
+      "geopolitical",
+      "macroeconomic"
+    ],
+    "capex_terms": [
+      "capital expenditures",
+      "data center",
+      "infrastructure",
+      "capacity expansion",
+      "gpu"
+    ]
+  },
   "weights": {
     "market": 0.35,
     "fundamentals": 0.25,

@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 import numpy as np
 import pandas as pd
 
+from .category_scoring import active_category, combine_category_scores, inactive_category
 from .market import calculate_market_metrics
 from .scoring import score_market, status_for
 
@@ -50,7 +51,26 @@ def build_sample_payload(config: dict) -> tuple[dict, list[dict]]:
     )
     market["source"] = "Synthetic sample"
 
-    score, evidence = score_market(market)
+    market_score, market_evidence = score_market(market)
+    categories = {
+        "market": active_category(
+            "market",
+            market_score,
+            1.0,
+            market,
+            market_evidence,
+            "Synthetic market indicators active.",
+        ),
+        "fundamentals": inactive_category("fundamentals", "Sample mode does not fetch SEC fundamentals."),
+        "capex_narrative": inactive_category("capex_narrative", "Sample mode does not fetch SEC filings."),
+        "adoption": inactive_category("adoption", "Sample mode does not fetch public adoption proxies."),
+        "macro": inactive_category("macro", "Sample mode does not fetch FRED macro data."),
+        "private_market": inactive_category("private_market", "No reliable free structured private-market source is configured."),
+    }
+    score, confidence, category_scores, evidence = combine_category_scores(
+        config["weights"],
+        categories,
+    )
     thresholds = config.get("status_thresholds")
     history_seed = market["basket_history"][-90:]
 
@@ -72,15 +92,9 @@ def build_sample_payload(config: dict) -> tuple[dict, list[dict]]:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "score": score,
         "status": status_for(score, thresholds),
-        "confidence": 0.55,
-        "category_scores": {
-            "market": score,
-            "fundamentals": None,
-            "capex_narrative": None,
-            "adoption": None,
-            "macro": None,
-            "private_market": None,
-        },
+        "confidence": confidence,
+        "category_scores": category_scores,
+        "categories": categories,
         "market": market,
         "evidence": evidence,
     }

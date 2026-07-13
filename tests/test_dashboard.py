@@ -10,6 +10,22 @@ def test_build_dashboard_writes_static_html(tmp_path) -> None:
         "status": "Normal",
         "confidence": 0.55,
         "evidence": [],
+        "categories": {
+            "market": {
+                "label": "Market price",
+                "active": True,
+                "score": 12,
+                "confidence": 1.0,
+                "message": "Test market indicators active.",
+            },
+            "macro": {
+                "label": "Macro",
+                "active": False,
+                "score": None,
+                "confidence": 0.0,
+                "message": "No key.",
+            },
+        },
         "market": {
             "source": "Test fixture",
             "below_50_fraction": 0.25,
@@ -41,5 +57,6 @@ def test_build_dashboard_writes_static_html(tmp_path) -> None:
 
     html = output_path.read_text(encoding="utf-8")
     assert "AI Bubble Stress Monitor" in html
-    assert "No market stress thresholds triggered" in html
+    assert "Signal categories" in html
+    assert "No stress thresholds triggered" in html
     assert "AAA" in html

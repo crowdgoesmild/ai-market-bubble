@@ -20,6 +20,14 @@ REQUIRED_CONFIG_KEYS = {
 }
 
 STATUS_THRESHOLD_KEYS = ("normal", "elevated", "strained", "high_risk")
+CATEGORY_WEIGHT_KEYS = (
+    "market",
+    "fundamentals",
+    "capex_narrative",
+    "adoption",
+    "macro",
+    "private_market",
+)
 
 
 def validate_config(config: dict[str, Any]) -> dict[str, Any]:
@@ -49,6 +57,17 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
 
     if provider != "tiingo":
         raise ValueError("Config key 'market_data_provider' must be 'tiingo'.")
+
+    weights = config["weights"]
+    if not isinstance(weights, dict):
+        raise ValueError("Config key 'weights' must be an object.")
+
+    missing_weights = [key for key in CATEGORY_WEIGHT_KEYS if key not in weights]
+    if missing_weights:
+        raise ValueError("Missing category weight(s): " + ", ".join(missing_weights))
+
+    if not all(isinstance(weights[key], (int, float)) and weights[key] >= 0 for key in CATEGORY_WEIGHT_KEYS):
+        raise ValueError("Category weights must be non-negative numeric values.")
 
     configured_tickers = set(tickers)
     missing_market_tickers = sorted((set(ai_basket) | {benchmark}) - configured_tickers)
