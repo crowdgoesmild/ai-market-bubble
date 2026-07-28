@@ -87,5 +87,12 @@
     "market_as_of": "2026-07-27",
     "score": 30.7,
     "status": "Elevated"
+  },
+  {
+    "run_at": "2026-07-28T22:33:54+00:00",
+    "date": "2026-07-28",
+    "market_as_of": "2026-07-28",
+    "score": 30.7,
+    "status": "Elevated"
   }
 ]
