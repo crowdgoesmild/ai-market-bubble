@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-08-31",
-  "generated_at": "2026-09-01T00:43:24+00:00",
+  "as_of": "2026-09-01",
+  "generated_at": "2026-09-01T23:28:05+00:00",
   "score": 20.1,
   "status": "Normal",
   "confidence": 0.88,
@@ -21,83 +21,79 @@
       "confidence": 1.0,
       "metrics": {
         "source": "Tiingo",
-        "as_of": "2026-08-31",
+        "as_of": "2026-09-01",
         "below_50_fraction": 0.5556,
         "below_200_fraction": 0.2222,
-        "basket_drawdown": -0.0823,
-        "annualised_volatility": 0.1891,
-        "volatility_percentile": 0.1374,
-        "relative_63d_vs_spy": -0.0961,
+        "basket_drawdown": -0.0973,
+        "annualised_volatility": 0.1679,
+        "volatility_percentile": 0.0324,
+        "relative_63d_vs_spy": -0.1012,
         "tickers": [
           {
             "ticker": "NVDA",
-            "price": 220.78,
+            "price": 217.44,
             "below_50dma": false,
             "below_200dma": false,
-            "drawdown_52w": -0.0624
+            "drawdown_52w": -0.0766
           },
           {
             "ticker": "AMD",
-            "price": 470.72,
+            "price": 459.61,
             "below_50dma": true,
             "below_200dma": false,
-            "drawdown_52w": -0.1897
+            "drawdown_52w": -0.2088
           },
           {
             "ticker": "AVGO",
-            "price": 370.34,
+            "price": 369.68,
             "below_50dma": true,
             "below_200dma": false,
-            "drawdown_52w": -0.2297
+            "drawdown_52w": -0.2311
           },
           {
             "ticker": "MSFT",
-            "price": 507.29,
+            "price": 501.02,
             "below_50dma": false,
             "below_200dma": false,
-            "drawdown_52w": -0.0564
+            "drawdown_52w": -0.0681
           },
           {
             "ticker": "GOOGL",
-            "price": 339.35,
+            "price": 335.02,
             "below_50dma": true,
             "below_200dma": false,
-            "drawdown_52w": -0.1566
+            "drawdown_52w": -0.1674
           },
           {
             "ticker": "AMZN",
-            "price": 259.77,
+            "price": 254.92,
             "below_50dma": false,
             "below_200dma": false,
-            "drawdown_52w": -0.0854
+            "drawdown_52w": -0.1025
           },
           {
             "ticker": "META",
-            "price": 572.34,
+            "price": 578.54,
             "below_50dma": true,
             "below_200dma": true,
-            "drawdown_52w": -0.2641
+            "drawdown_52w": -0.2561
           },
           {
             "ticker": "ORCL",
-            "price": 149.12,
+            "price": 141.32,
             "below_50dma": false,
             "below_200dma": true,
-            "drawdown_52w": -0.5406
+            "drawdown_52w": -0.5647
           },
           {
             "ticker": "SMH",
-            "price": 556.63,
+            "price": 545.22,
             "below_50dma": true,
             "below_200dma": false,
-            "drawdown_52w": -0.1679
+            "drawdown_52w": -0.1849
           }
         ],
         "basket_history": [
-          {
-            "date": "2025-12-11",
-            "value": 1.5463
-          },
           {
             "date": "2025-12-12",
             "value": 1.48859
@@ -813,6 +809,10 @@
           {
             "date": "2026-08-31",
             "value": 1.8361
+          },
+          {
+            "date": "2026-09-01",
+            "value": 1.80626
           }
         ]
       },
@@ -825,12 +825,12 @@
         {
           "signal": "Drawdown",
           "points": 7,
-          "detail": "The equal-weight basket is 8.2% below its peak."
+          "detail": "The equal-weight basket is 9.7% below its peak."
         },
         {
           "signal": "Relative weakness",
           "points": 10,
-          "detail": "The basket trails SPY by 9.6% over roughly three months."
+          "detail": "The basket trails SPY by 10.1% over roughly three months."
         }
       ],
       "message": "Tiingo daily adjusted-price indicators active."
@@ -1033,71 +1033,71 @@
         "github_repositories": [
           {
             "repository": "huggingface/transformers",
-            "stars": 164672,
-            "forks": 34411,
-            "open_issues": 2402,
+            "stars": 164704,
+            "forks": 34419,
+            "open_issues": 2392,
             "days_since_push": 0
           },
           {
             "repository": "pytorch/pytorch",
-            "stars": 102696,
-            "forks": 29061,
-            "open_issues": 17495,
+            "stars": 102709,
+            "forks": 29074,
+            "open_issues": 17531,
             "days_since_push": 0
           },
           {
             "repository": "langchain-ai/langchain",
-            "stars": 145371,
-            "forks": 24256,
-            "open_issues": 437,
+            "stars": 145454,
+            "forks": 24271,
+            "open_issues": 468,
             "days_since_push": 0
           },
           {
             "repository": "ollama/ollama",
-            "stars": 179850,
-            "forks": 17625,
-            "open_issues": 3859,
+            "stars": 179917,
+            "forks": 17650,
+            "open_issues": 3876,
             "days_since_push": 0
           },
           {
             "repository": "vllm-project/vllm",
-            "stars": 90626,
-            "forks": 21495,
-            "open_issues": 7284,
+            "stars": 90703,
+            "forks": 21566,
+            "open_issues": 7317,
             "days_since_push": 0
           },
           {
             "repository": "microsoft/autogen",
-            "stars": 60728,
-            "forks": 9170,
-            "open_issues": 1002,
-            "days_since_push": 138
+            "stars": 60740,
+            "forks": 9172,
+            "open_issues": 1006,
+            "days_since_push": 139
           }
         ],
         "huggingface_models": [
           {
             "model": "meta-llama/Llama-3.1-8B-Instruct",
-            "downloads": 5861628,
-            "likes": 6726,
-            "days_since_modified": 705
+            "downloads": 5945153,
+            "likes": 6741,
+            "days_since_modified": 706
           },
           {
             "model": "Qwen/Qwen2.5-7B-Instruct",
-            "downloads": 10577733,
-            "likes": 1570,
-            "days_since_modified": 596
+            "downloads": 10645526,
+            "likes": 1571,
+            "days_since_modified": 597
           },
           {
             "model": "mistralai/Mistral-7B-Instruct-v0.3",
-            "downloads": 3065309,
+            "downloads": 2999981,
             "likes": 2834,
-            "days_since_modified": 271
+            "days_since_modified": 272
           },
           {
             "model": "openai/gpt-oss-20b",
-            "downloads": 6450692,
-            "likes": 4973,
-            "days_since_modified": 370
+            "downloads": 6519052,
+            "likes": 4974,
+            "days_since_modified": 371
           }
         ],
         "errors": []
@@ -1118,13 +1118,13 @@
       "score": 0.0,
       "confidence": 0.8,
       "metrics": {
-        "high_yield_spread": 2.6,
-        "high_yield_spread_percentile": 0.0051,
-        "vix": 14.43,
-        "vix_percentile": 0.2319,
-        "ten_year_yield": 4.73,
+        "high_yield_spread": 2.63,
+        "high_yield_spread_percentile": 0.0217,
+        "vix": 14.92,
+        "vix_percentile": 0.295,
+        "ten_year_yield": 4.75,
         "ten_year_yield_3m_change": 0.28,
-        "ten_two_curve": 0.39,
+        "ten_two_curve": 0.41,
         "financial_conditions": -0.566,
         "financial_conditions_percentile": 0.0128
       },
@@ -1144,83 +1144,79 @@
   },
   "market": {
     "source": "Tiingo",
-    "as_of": "2026-08-31",
+    "as_of": "2026-09-01",
     "below_50_fraction": 0.5556,
     "below_200_fraction": 0.2222,
-    "basket_drawdown": -0.0823,
-    "annualised_volatility": 0.1891,
-    "volatility_percentile": 0.1374,
-    "relative_63d_vs_spy": -0.0961,
+    "basket_drawdown": -0.0973,
+    "annualised_volatility": 0.1679,
+    "volatility_percentile": 0.0324,
+    "relative_63d_vs_spy": -0.1012,
     "tickers": [
       {
         "ticker": "NVDA",
-        "price": 220.78,
+        "price": 217.44,
         "below_50dma": false,
         "below_200dma": false,
-        "drawdown_52w": -0.0624
+        "drawdown_52w": -0.0766
       },
       {
         "ticker": "AMD",
-        "price": 470.72,
+        "price": 459.61,
         "below_50dma": true,
         "below_200dma": false,
-        "drawdown_52w": -0.1897
+        "drawdown_52w": -0.2088
       },
       {
         "ticker": "AVGO",
-        "price": 370.34,
+        "price": 369.68,
         "below_50dma": true,
         "below_200dma": false,
-        "drawdown_52w": -0.2297
+        "drawdown_52w": -0.2311
       },
       {
         "ticker": "MSFT",
-        "price": 507.29,
+        "price": 501.02,
         "below_50dma": false,
         "below_200dma": false,
-        "drawdown_52w": -0.0564
+        "drawdown_52w": -0.0681
       },
       {
         "ticker": "GOOGL",
-        "price": 339.35,
+        "price": 335.02,
         "below_50dma": true,
         "below_200dma": false,
-        "drawdown_52w": -0.1566
+        "drawdown_52w": -0.1674
       },
       {
         "ticker": "AMZN",
-        "price": 259.77,
+        "price": 254.92,
         "below_50dma": false,
         "below_200dma": false,
-        "drawdown_52w": -0.0854
+        "drawdown_52w": -0.1025
       },
       {
         "ticker": "META",
-        "price": 572.34,
+        "price": 578.54,
         "below_50dma": true,
         "below_200dma": true,
-        "drawdown_52w": -0.2641
+        "drawdown_52w": -0.2561
       },
       {
         "ticker": "ORCL",
-        "price": 149.12,
+        "price": 141.32,
         "below_50dma": false,
         "below_200dma": true,
-        "drawdown_52w": -0.5406
+        "drawdown_52w": -0.5647
       },
       {
         "ticker": "SMH",
-        "price": 556.63,
+        "price": 545.22,
         "below_50dma": true,
         "below_200dma": false,
-        "drawdown_52w": -0.1679
+        "drawdown_52w": -0.1849
       }
     ],
     "basket_history": [
-      {
-        "date": "2025-12-11",
-        "value": 1.5463
-      },
       {
         "date": "2025-12-12",
         "value": 1.48859
@@ -1936,6 +1932,10 @@
       {
         "date": "2026-08-31",
         "value": 1.8361
+      },
+      {
+        "date": "2026-09-01",
+        "value": 1.80626
       }
     ]
   },
@@ -1950,13 +1950,13 @@
       "category": "Market price",
       "signal": "Drawdown",
       "points": 7,
-      "detail": "The equal-weight basket is 8.2% below its peak."
+      "detail": "The equal-weight basket is 9.7% below its peak."
     },
     {
       "category": "Market price",
       "signal": "Relative weakness",
       "points": 10,
-      "detail": "The basket trails SPY by 9.6% over roughly three months."
+      "detail": "The basket trails SPY by 10.1% over roughly three months."
     },
     {
       "category": "Fundamentals",
