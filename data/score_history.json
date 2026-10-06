@@ -430,5 +430,12 @@
     "market_as_of": "2026-10-02",
     "score": 15.7,
     "status": "Normal"
+  },
+  {
+    "run_at": "2026-10-06T01:49:47+00:00",
+    "date": "2026-10-06",
+    "market_as_of": "2026-10-05",
+    "score": 13.5,
+    "status": "Normal"
   }
 ]
