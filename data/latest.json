@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-10-14",
-  "generated_at": "2026-10-15T00:00:28+00:00",
+  "as_of": "2026-10-15",
+  "generated_at": "2026-10-15T23:45:14+00:00",
   "score": 14.7,
   "status": "Normal",
   "confidence": 0.88,
@@ -21,83 +21,79 @@
       "confidence": 1.0,
       "metrics": {
         "source": "Tiingo",
-        "as_of": "2026-10-14",
+        "as_of": "2026-10-15",
         "below_50_fraction": 0.5556,
         "below_200_fraction": 0.2222,
-        "basket_drawdown": -0.0536,
-        "annualised_volatility": 0.2779,
-        "volatility_percentile": 0.5602,
-        "relative_63d_vs_spy": 0.0521,
+        "basket_drawdown": -0.0539,
+        "annualised_volatility": 0.2603,
+        "volatility_percentile": 0.4504,
+        "relative_63d_vs_spy": 0.0537,
         "tickers": [
           {
             "ticker": "NVDA",
-            "price": 221.3,
+            "price": 217.23,
             "below_50dma": true,
             "below_200dma": false,
-            "drawdown_52w": -0.075
+            "drawdown_52w": -0.092
           },
           {
             "ticker": "AMD",
-            "price": 570.82,
+            "price": 562.23,
             "below_50dma": false,
             "below_200dma": false,
-            "drawdown_52w": -0.121
+            "drawdown_52w": -0.1343
           },
           {
             "ticker": "AVGO",
-            "price": 346.25,
+            "price": 344.33,
             "below_50dma": true,
             "below_200dma": true,
-            "drawdown_52w": -0.2785
+            "drawdown_52w": -0.2825
           },
           {
             "ticker": "MSFT",
-            "price": 533.69,
+            "price": 539.44,
             "below_50dma": false,
             "below_200dma": false,
-            "drawdown_52w": -0.018
+            "drawdown_52w": -0.0074
           },
           {
             "ticker": "GOOGL",
-            "price": 347.64,
+            "price": 349.22,
             "below_50dma": false,
             "below_200dma": false,
-            "drawdown_52w": -0.1355
+            "drawdown_52w": -0.1315
           },
           {
             "ticker": "AMZN",
-            "price": 254.08,
+            "price": 254.76,
             "below_50dma": true,
             "below_200dma": false,
-            "drawdown_52w": -0.1054
+            "drawdown_52w": -0.103
           },
           {
             "ticker": "META",
-            "price": 737.54,
+            "price": 736.72,
             "below_50dma": false,
             "below_200dma": false,
-            "drawdown_52w": -0.0515
+            "drawdown_52w": -0.0526
           },
           {
             "ticker": "ORCL",
-            "price": 130.55,
+            "price": 134.47,
             "below_50dma": true,
             "below_200dma": true,
-            "drawdown_52w": -0.5774
+            "drawdown_52w": -0.5647
           },
           {
             "ticker": "SMH",
-            "price": 564.74,
+            "price": 558.84,
             "below_50dma": true,
             "below_200dma": false,
-            "drawdown_52w": -0.1557
+            "drawdown_52w": -0.1646
           }
         ],
         "basket_history": [
-          {
-            "date": "2026-01-28",
-            "value": 1.63783
-          },
           {
             "date": "2026-01-29",
             "value": 1.6344
@@ -813,6 +809,10 @@
           {
             "date": "2026-10-14",
             "value": 1.99079
+          },
+          {
+            "date": "2026-10-15",
+            "value": 1.99023
           }
         ]
       },
@@ -1023,71 +1023,71 @@
         "github_repositories": [
           {
             "repository": "huggingface/transformers",
-            "stars": 167692,
-            "forks": 34870,
-            "open_issues": 2328,
+            "stars": 167731,
+            "forks": 34873,
+            "open_issues": 2318,
             "days_since_push": 0
           },
           {
             "repository": "pytorch/pytorch",
-            "stars": 104685,
-            "forks": 32494,
-            "open_issues": 17683,
+            "stars": 104706,
+            "forks": 32565,
+            "open_issues": 17664,
             "days_since_push": 0
           },
           {
             "repository": "langchain-ai/langchain",
-            "stars": 147833,
-            "forks": 24803,
-            "open_issues": 644,
+            "stars": 147886,
+            "forks": 24818,
+            "open_issues": 650,
             "days_since_push": 0
           },
           {
             "repository": "ollama/ollama",
-            "stars": 183181,
-            "forks": 18278,
-            "open_issues": 4276,
+            "stars": 183324,
+            "forks": 18306,
+            "open_issues": 4296,
             "days_since_push": 0
           },
           {
             "repository": "vllm-project/vllm",
-            "stars": 93799,
-            "forks": 23389,
-            "open_issues": 8870,
+            "stars": 93869,
+            "forks": 23423,
+            "open_issues": 8929,
             "days_since_push": 0
           },
           {
             "repository": "microsoft/autogen",
-            "stars": 61408,
-            "forks": 9284,
-            "open_issues": 1109,
-            "days_since_push": 182
+            "stars": 61427,
+            "forks": 9288,
+            "open_issues": 1115,
+            "days_since_push": 183
           }
         ],
         "huggingface_models": [
           {
             "model": "meta-llama/Llama-3.1-8B-Instruct",
-            "downloads": 6034692,
-            "likes": 8418,
-            "days_since_modified": 749
+            "downloads": 5930556,
+            "likes": 8442,
+            "days_since_modified": 750
           },
           {
             "model": "Qwen/Qwen2.5-7B-Instruct",
-            "downloads": 7357696,
-            "likes": 2438,
-            "days_since_modified": 640
+            "downloads": 7250653,
+            "likes": 2441,
+            "days_since_modified": 641
           },
           {
             "model": "mistralai/Mistral-7B-Instruct-v0.3",
-            "downloads": 2040502,
-            "likes": 3801,
-            "days_since_modified": 315
+            "downloads": 2023922,
+            "likes": 3803,
+            "days_since_modified": 316
           },
           {
             "model": "openai/gpt-oss-20b",
-            "downloads": 5982456,
-            "likes": 5180,
-            "days_since_modified": 414
+            "downloads": 5988822,
+            "likes": 5181,
+            "days_since_modified": 415
           }
         ],
         "errors": []
@@ -1108,21 +1108,21 @@
       "score": 9.0,
       "confidence": 0.8,
       "metrics": {
-        "high_yield_spread": 3.16,
-        "high_yield_spread_percentile": 0.6535,
-        "vix": 15.27,
-        "vix_percentile": 0.3338,
-        "ten_year_yield": 5.21,
-        "ten_year_yield_3m_change": 0.63,
-        "ten_two_curve": 0.42,
-        "financial_conditions": -0.494,
-        "financial_conditions_percentile": 0.4194
+        "high_yield_spread": 3.25,
+        "high_yield_spread_percentile": 0.7735,
+        "vix": 16.87,
+        "vix_percentile": 0.5762,
+        "ten_year_yield": 5.19,
+        "ten_year_yield_3m_change": 0.64,
+        "ten_two_curve": 0.37,
+        "financial_conditions": -0.499,
+        "financial_conditions_percentile": 0.4103
       },
       "evidence": [
         {
           "signal": "Rate shock",
           "points": 9,
-          "detail": "10-year Treasury yield rose 0.63 points in roughly three months."
+          "detail": "10-year Treasury yield rose 0.64 points in roughly three months."
         }
       ],
       "message": "Free FRED macro indicators active."
@@ -1140,83 +1140,79 @@
   },
   "market": {
     "source": "Tiingo",
-    "as_of": "2026-10-14",
+    "as_of": "2026-10-15",
     "below_50_fraction": 0.5556,
     "below_200_fraction": 0.2222,
-    "basket_drawdown": -0.0536,
-    "annualised_volatility": 0.2779,
-    "volatility_percentile": 0.5602,
-    "relative_63d_vs_spy": 0.0521,
+    "basket_drawdown": -0.0539,
+    "annualised_volatility": 0.2603,
+    "volatility_percentile": 0.4504,
+    "relative_63d_vs_spy": 0.0537,
     "tickers": [
       {
         "ticker": "NVDA",
-        "price": 221.3,
+        "price": 217.23,
         "below_50dma": true,
         "below_200dma": false,
-        "drawdown_52w": -0.075
+        "drawdown_52w": -0.092
       },
       {
         "ticker": "AMD",
-        "price": 570.82,
+        "price": 562.23,
         "below_50dma": false,
         "below_200dma": false,
-        "drawdown_52w": -0.121
+        "drawdown_52w": -0.1343
       },
       {
         "ticker": "AVGO",
-        "price": 346.25,
+        "price": 344.33,
         "below_50dma": true,
         "below_200dma": true,
-        "drawdown_52w": -0.2785
+        "drawdown_52w": -0.2825
       },
       {
         "ticker": "MSFT",
-        "price": 533.69,
+        "price": 539.44,
         "below_50dma": false,
         "below_200dma": false,
-        "drawdown_52w": -0.018
+        "drawdown_52w": -0.0074
       },
       {
         "ticker": "GOOGL",
-        "price": 347.64,
+        "price": 349.22,
         "below_50dma": false,
         "below_200dma": false,
-        "drawdown_52w": -0.1355
+        "drawdown_52w": -0.1315
       },
       {
         "ticker": "AMZN",
-        "price": 254.08,
+        "price": 254.76,
         "below_50dma": true,
         "below_200dma": false,
-        "drawdown_52w": -0.1054
+        "drawdown_52w": -0.103
       },
       {
         "ticker": "META",
-        "price": 737.54,
+        "price": 736.72,
         "below_50dma": false,
         "below_200dma": false,
-        "drawdown_52w": -0.0515
+        "drawdown_52w": -0.0526
       },
       {
         "ticker": "ORCL",
-        "price": 130.55,
+        "price": 134.47,
         "below_50dma": true,
         "below_200dma": true,
-        "drawdown_52w": -0.5774
+        "drawdown_52w": -0.5647
       },
       {
         "ticker": "SMH",
-        "price": 564.74,
+        "price": 558.84,
         "below_50dma": true,
         "below_200dma": false,
-        "drawdown_52w": -0.1557
+        "drawdown_52w": -0.1646
       }
     ],
     "basket_history": [
-      {
-        "date": "2026-01-28",
-        "value": 1.63783
-      },
       {
         "date": "2026-01-29",
         "value": 1.6344
@@ -1932,6 +1928,10 @@
       {
         "date": "2026-10-14",
         "value": 1.99079
+      },
+      {
+        "date": "2026-10-15",
+        "value": 1.99023
       }
     ]
   },
@@ -1970,7 +1970,7 @@
       "category": "Macro",
       "signal": "Rate shock",
       "points": 9,
-      "detail": "10-year Treasury yield rose 0.63 points in roughly three months."
+      "detail": "10-year Treasury yield rose 0.64 points in roughly three months."
     }
   ]
 }
