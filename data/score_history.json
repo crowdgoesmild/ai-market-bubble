@@ -703,5 +703,12 @@
     "market_as_of": "2026-11-25",
     "score": 46.0,
     "status": "Strained"
+  },
+  {
+    "run_at": "2026-11-28T03:26:16+00:00",
+    "date": "2026-11-28",
+    "market_as_of": "2026-11-27",
+    "score": 46.0,
+    "status": "Strained"
   }
 ]
